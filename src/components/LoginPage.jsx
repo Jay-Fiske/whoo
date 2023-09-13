@@ -32,7 +32,10 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user_data = JSON.parse(localStorage.getItem("user_data"));
+    let user_data = JSON.parse(localStorage.getItem("user_data"));
+    if (user_data===null){
+       user_data = []
+    }
     const user = user_data.find((user) => user.email === values.email);
     if (user) {
       if (user.password === values.password) {
